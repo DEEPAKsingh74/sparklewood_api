@@ -1,0 +1,52 @@
+services:
+
+# Backend API for incident safety logs.
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile.dev
+    container_name: backend_api
+    volumes:
+      - ./api:/app
+      - wood_api_data:/app/node_modules
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - DB_HOST=db
+      - DB_PORT=5432
+    depends_on:
+      - db
+    env_file:
+      - .env
+
+# Database used in incident safety - Postgresql.
+  db:
+    image: postgres:latest
+    container_name: postgres_db
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db-init:/docker-entrypoint-initdb.d
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    env_file:
+      - .env
+      
+#  Redis cache for caching.
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+  wood_api_data:

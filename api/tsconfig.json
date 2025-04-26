@@ -1,0 +1,33 @@
+{
+	"compilerOptions": {
+	  "target": "ES2020",
+	  "module": "commonjs",
+	  "outDir": "dist",
+	  "rootDir": "src",
+	  "strict": true,
+	  "esModuleInterop": true,
+	  "moduleResolution": "node",
+	  "forceConsistentCasingInFileNames": true,
+	  "skipLibCheck": true,
+	  "resolveJsonModule": true,
+	  "types": ["node"],
+	  "noUnusedLocals": true,
+	  "noUnusedParameters": true,
+	  "noFallthroughCasesInSwitch": true,
+	  "allowSyntheticDefaultImports": true,
+	  "experimentalDecorators": true,
+	  "strictPropertyInitialization": false,
+	  "emitDecoratorMetadata": true,
+  
+	  "baseUrl": "src",
+	  "paths": {
+		"@utils/*": ["utils/*"],
+		"@config/*": ["config/*"],
+		"@infra/*": ["infrastructure/*"],
+		"@api_v1/*": ["api/v1/*"],
+	  }
+	},
+	"include": ["src/**/*"],
+	"exclude": ["node_modules", "dist"]
+  }
+  
