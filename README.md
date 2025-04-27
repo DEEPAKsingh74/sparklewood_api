@@ -37,8 +37,8 @@ Built with **Node.js, Express, TypeScript, PostgreSQL, and Redis**, this API off
 
 1. **Clone the Repository**  
    ```bash
-   git clone https://github.com/DEEPAKsingh74/sparkelwood.git
-   cd sparkelwood
+   git clone https://github.com/DEEPAKsingh74/sparklewood_api.git
+   cd sparklewood_api
    ```  
 
 2. **Set Up Environment Variables**  
