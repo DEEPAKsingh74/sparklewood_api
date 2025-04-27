@@ -20,7 +20,7 @@ Built with **Node.js, Express, TypeScript, PostgreSQL, and Redis**, this API off
 
 ## 🛠 Tech Stack  
 
-- **Backend**: Node.js, Express, TypeScript  
+- **Backend**: Node.js, Express, TypeScript, zod  
 - **Database**: PostgreSQL (persistent storage)  
 - **Caching**: Redis (for performance optimization)  
 - **Containerization**: Docker, Docker Compose   
@@ -33,7 +33,7 @@ Built with **Node.js, Express, TypeScript, PostgreSQL, and Redis**, this API off
 - Docker ([Install Docker](https://docs.docker.com/get-docker/))  
 - Docker Compose ([Install Docker Compose](https://docs.docker.com/compose/install/))  
 
-### Steps to Run  
+### Steps to Run  (if installed from github)
 
 1. **Clone the Repository**  
    ```bash
@@ -70,7 +70,23 @@ Built with **Node.js, Express, TypeScript, PostgreSQL, and Redis**, this API off
    { "status": "OK", "message": "AI Safety Log API is running" }
    ```  
 
+### Steps to Run  (if have a zip file)
 
+1. **Unzip the folder** 
+2. **```cd <folder>```**
+3. **Run with Docker Compose**  
+   ```bash
+   docker-compose up --build
+   ```  
+   The API will start at `http://localhost:8000`.  
+
+4. **Verify the API**  
+   ```bash
+   curl http://localhost:8000/api/v1/health
+   ```  
+   Expected Response:  
+   ```json
+   { "status": "OK", "message": "AI Safety Log API is running" }
 
 ## 📡 API Usage  
 
@@ -88,8 +104,6 @@ Built with **Node.js, Express, TypeScript, PostgreSQL, and Redis**, this API off
     "description": "string (optional)",
     "severity": "LOW | MEDIUM | HIGH (default LOW)"
   }
-  ```
-
 ---
 
 ### List all incidents
@@ -100,7 +114,7 @@ Built with **Node.js, Express, TypeScript, PostgreSQL, and Redis**, this API off
   | Name | Type | Description |
   |------|------|-------------|
   | `page` | number | current page you want |
-  | `limit` | number | number if incidents per page |
+  | `limit` | number | number of incidents per page |
   | `ordered` | boolean | `ASC` / `DSC` order |
 
 ---
